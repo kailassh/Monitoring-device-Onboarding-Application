@@ -1,0 +1,114 @@
+.tabsdemoStaticTabs md-content md-tabs {
+  border: 1px solid #e1e1e1; }
+  .tabsdemoStaticTabs md-content md-tabs md-tab-content {
+    padding: 25px; }
+    .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(1) {
+      background-color: #cfd8dc; }
+    .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(2) {
+      background-color: #ffb74d; }
+    .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(3) {
+      background-color: #ffd54f; }
+    .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(4) {
+      background-color: #cfd8dc; }
+    .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(5) {
+      background-color: #cfd8dc; }
+      .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(6) {
+        background-color: #cfd8dc; }
+        .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(7) {
+          background-color: #cfd8dc; }
+          .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(8) {
+            background-color: #cfd8dc; }
+            .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(9) {
+              background-color: #cfd8dc; }
+              .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(10) {
+                background-color: #cfd8dc; }
+                .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(11) {
+                  background-color: #cfd8dc; }
+                  .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(12) {
+                    background-color: #cfd8dc; }
+                    .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(13) {
+                      background-color: #cfd8dc; }
+                      .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(14) {
+                        background-color: #cfd8dc; }
+                        .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(15) {
+                          background-color: #cfd8dc; }
+                          .tabsdemoStaticTabs md-content md-tabs md-tab-content:nth-child(16) {
+                            background-color: #cfd8dc; }
+
+                            .tabsdemoDynamicTabs md-content {
+                              background-color: transparent !important; }
+                              .tabsdemoDynamicTabs md-content md-tabs {
+                                border: 1px solid #e1e1e1; }
+                                .tabsdemoDynamicTabs md-content md-tabs md-tab-content {
+                                  background: #f6f6f6; }
+                                .tabsdemoDynamicTabs md-content md-tabs md-tabs-wrapper {
+                                  background: white; }
+                              .tabsdemoDynamicTabs md-content h1:first-child {
+                                margin-top: 0; }
+
+                            .tabsdemoDynamicTabs md-input-container {
+                              padding-bottom: 0; }
+
+                            .tabsdemoDynamicTabs .remove-tab {
+                              margin-bottom: 40px; }
+
+                            .tabsdemoDynamicTabs .demo-tab > div > div {
+                              padding: 25px;
+                              box-sizing: border-box; }
+
+                            .tabsdemoDynamicTabs .edit-form input {
+                              width: 100%; }
+
+                            .tabsdemoDynamicTabs md-tabs {
+                              border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
+
+                            .tabsdemoDynamicTabs md-tab[disabled] {
+                              opacity: 0.5; }
+
+                            .tabsdemoDynamicTabs label {
+                              text-align: left; }
+
+                            .tabsdemoDynamicTabs .long > input {
+                              width: 264px; }
+
+                            .tabsdemoDynamicTabs .md-button.add-tab {
+                              transform: translateY(5px); }
+
+
+.tabsdemoStaticTabs .after-tabs-area > span {
+  margin-top: 35px;
+  padding-right: 15px;
+  vertical-align: middle;
+  line-height: 30px;
+  height: 35px; }
+
+.tabsdemoStaticTabs .after-tabs-area > md-checkbox {
+  margin-top: 26px;
+  margin-left: 0; }
+
+  .cont{
+      position:relative;
+      overflow-x:scroll;
+      height:500px;
+      width:100%;
+  }
+
+  table {
+      outline: 1px solid black;
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+  }
+  table td {
+      border: 1px solid blue;
+      padding: 5px;
+  }
+  table th {
+      border: 1px solid black;
+      padding: 5px;
+  }
+  select {
+      width: 140px;
+      border: none;
+      font-family: inherit;
+      font-size: inherit;
+  }

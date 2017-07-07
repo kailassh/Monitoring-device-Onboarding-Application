@@ -1,0 +1,51 @@
+<div class="cont">
+  <h1 style="text-align: center">General Information Page</h1>
+<table class="contTable" align="center">
+  <tr>
+    <th>ProjectID</th>
+    <th>Name Owner</th>
+    <th>Title/Role</th>
+    <th>Business Unit</th>
+    <th>Dept.ID / Cost Center</th>
+    <th>Application / Service Name</th>
+    <th>Application Short Name</th>
+    <th>Application CMDB ID</th>
+    <th>Application Tier</th>
+    <th>Hosted Environment</th>
+  </tr>
+	<tr ng-repeat="g in gen" ng-include="getTemplate(g)">
+	</tr>
+</table>
+
+<script type="text/ng-template" id="display">
+  <td>{{g.projectId}}</td>
+	<td>{{g.name}}</td>
+	<td>{{g.title}}</td>
+	<td>{{g.bu}}</td>
+	<td>{{g.deptId}}</td>
+	<td>{{g.app_name}}</td>
+	<td>{{g.app_sname}}</td>
+	<td>{{g.cmdb}}</td>
+	<td>{{g.tier}}</td>
+	<td>{{g.env}}</td>
+	<td>
+		<md-button class="md-raised md-primary" ng-click="editInfo(g)">EDIT</md-button>
+	</td>
+</script>
+<script type="text/ng-template" id="edit">
+  <td><input type="text" ng-model="selected_general.projectId" /></td>
+	<td><input type="text" ng-model="selected_general.name" /></td>
+    <td><input type="text" ng-model="selected_general.title" /></td>
+    <td><input type="text" ng-model="selected_general.bu" /></td>
+    <td><input type="text" ng-model="selected_general.deptId" /></td>
+    <td><input type="text" ng-model="selected_general.app_name" /></td>
+    <td><input type="text" ng-model="selected_general.app_sname" /></td>
+    <td><input type="text" ng-model="selected_general.cmdb" /></td>
+    <td><input type="text" ng-model="selected_general.tier" /></td>
+    <td><input type="text" ng-model="selected_general.env" /></td>
+    <td>
+        <md-button class="md-raised md-primary" ng-click="saveContact($index)">Save</md-button>>
+        <md-button class="md-raised md-primary" ng-click="reset()">Cancel</md-button>>
+    </td>
+</script>
+</div>

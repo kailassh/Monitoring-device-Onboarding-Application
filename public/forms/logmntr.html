@@ -1,0 +1,81 @@
+
+	<h1 style="text-align: center">Log Monitoring and Analysis: Data on Boarding</h1>
+<div ng-controller="AppCtrl">
+
+<form>
+	<div ng-if="tag9" ng-controller="EmpCtrl">
+	  <p>This form has already been entered</p>
+	  <p>This is the data you have enetred</p>
+	  <table class="table">
+			<tr>
+		    <th>ID</th>
+		    <th>Host Information</th>
+		    <th>Data Collection</th>
+		    <th>Data Access</th>
+		    <th>Data Information</th>
+		    <th>Important Information</th>
+		  </tr>
+			<tr ng-repeat="g in log">
+				<td>{{g.projectId}}</td>
+				<td>{{g.hstinfo}}</td>
+				<td>{{g.dc}}</td>
+				<td>{{g.da}}</td>
+				<td>{{g.di}}</td>
+				<td>{{g.imp}}</td>
+			</tr>
+	  </table>
+  </div>
+
+	<div ng-if="!tag9" ng-controller="AppCtrl">
+<table align="center">
+<tr>
+	<td>
+		<label>Host Information  </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="hstinfo" form="usrform" placeholder="Additional Comments or Remarks etc...">
+</textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>Data Collection	  </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="dc" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>Data Access  </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="da" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>Data Information	  </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="di" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>IMPORTANT INFORMATION - PLEASE READ	  </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="imp" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+</table>
+<div style="text-align:center">
+    <div ng-if="isDisabled">
+      <strong>Your Form has been submitted. Please proceed further.</strong>
+    </div>
+    <md-button class="md-raised md-primary" ng-click="logmn()" ng-disabled="isDisabled" >Submit</md-button>
+</div>
+</div>
+</form>
+</div>

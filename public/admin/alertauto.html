@@ -1,0 +1,46 @@
+<div class="cont">
+  <h1 style="text-align: center">Alert Auto Remediation Page</h1>
+  <!-- h4>{{gen}}</h4 -->
+<table class="contTable" align="center">
+  <tr>
+    <th>ProjectID</th>
+    <th>Monitor</th>
+    <th>Script</th>
+    <th>Command Timeout</th>
+    <th>Command</th>
+    <th>Clear Command</th>
+    <th>Environment Variables</th>
+    <th>Remarks</th>
+  </tr>
+	<tr ng-repeat="g in auto" ng-include="getauto(g)">
+	</tr>
+</table>
+
+<script type="text/ng-template" id="display">
+	<td>{{g.projectId}}</td>
+	<td>{{g.mntr}}</td>
+	<td>{{g.script}}</td>
+	<td>{{g.ct}}</td>
+	<td>{{g.cmnd}}</td>
+	<td>{{g.cc}}</td>
+	<td>{{g.ev}}</td>
+	<td>{{g.rmks}}</td>
+	<td>
+		<md-button class="md-raised md-primary" ng-click="editauto(g)">EDIT</md-button>
+	</td>
+</script>
+<script type="text/ng-template" id="edit">
+	<td><input type="text" ng-model="selected_auto.projectId" /></td>
+    <td><input type="text" ng-model="selected_auto.mntr" /></td>
+    <td><input type="text" ng-model="selected_auto.script" /></td>
+    <td><input type="text" ng-model="selected_auto.ct" /></td>
+    <td><input type="text" ng-model="selected_auto.cmnd" /></td>
+    <td><input type="text" ng-model="selected_auto.cc" /></td>
+    <td><input type="text" ng-model="selected_auto.ev" /></td>
+    <td><input type="text" ng-model="selected_auto.rmks" /></td>
+    <td>
+        <md-button class="md-raised md-primary" ng-click="saveauto($index)">Save</md-button>>
+        <md-button class="md-raised md-primary" ng-click="resetauto()">Cancel</md-button>>
+    </td>
+</script>
+</div>

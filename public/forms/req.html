@@ -1,0 +1,81 @@
+
+	<h1 style="text-align: center">Requirments, Summary and API</h1>
+	<div ng-controller="AppCtrl">
+
+
+<form>
+	<div ng-if="tag1" ng-controller="EmpCtrl">
+  	<p>This form has already been entered</p>
+		<p>This is the data you have enetred</p>
+		<table class="table">
+			<tr>
+			<th>ID</th>
+		    <th>Business Requirements and Drivers</th>
+		    <th>Application Summary</th>
+		    <th>Application health KPI's</th>
+		    <th>Infrastructure health KPI's</th>
+			</tr>
+			<tr ng-repeat="g in req">
+				<td>{{g.projectId}}</td>
+				<td>{{g.brd}}</td>
+				<td>{{g.ask}}</td>
+				<td>{{g.ahk}}</td>
+				<td>{{g.ihk}}</td>
+			</tr>
+		</table>
+  </div>
+
+	<div ng-if="!tag1" ng-controller="AppCtrl">
+<table align="center">
+<tr>
+	<td>
+		<label>Business Requirements and drivers  </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="brd" placeholder="Additional Comments or Remarks etc...">
+</textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>Application Summary  </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="ask" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>Application Health KPI's  </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="ahk" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>Infrastructure Health KPI's  </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="ihk" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>Architecture Diagram  </label>
+	</td>
+	<td>
+		<input type="file" id="myFile">
+	</td>
+</tr>
+</table>
+<div style="text-align:center">
+    <div ng-if="isDisabled">
+      <strong>Your Form has been submitted. Please proceed further.</strong>
+    </div>
+    <md-button class="md-raised md-primary" ng-click="reqmnt()" ng-disabled="isDisabled" >Submit</md-button>
+</div>
+</div>
+</form>
+
+</div>

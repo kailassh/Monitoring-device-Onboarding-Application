@@ -1,0 +1,40 @@
+<div ng-controller="LoginCtrl" layout="column" layout-padding>
+    <div align="center">
+    <img src="https://company-profile-images.s3.amazonaws.com/images/434718/995531/logo/juniper-networks-logo.jpg " alt="">
+    <h1>Monitoring as a Service - Uniform Platform and Service-Centric Approach</h1>
+    </div>
+    <md-content class="md-no-momentum">
+    <md-input-container class="md-icon-float md-block">
+      <!-- Use floating label instead of placeholder -->
+        <label>Username</label>
+        <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+        <input ng-model="admin.username" type="text" ng-required="true">
+    </md-input-container>
+
+    <md-input-container class="md-icon-float md-block">
+        <label>Password</label>
+        <!--md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon-->
+        <input ng-model="admin.password" type="password" ng-required="true">
+    </md-input-container>
+    </md-content>
+    <md-button class="md-raised md-primary" ng-click="Admin()" >Admin Login</md-button>
+        <br>
+        <br>
+        <br>
+        <br>
+    <md-content class="md-no-momentum">
+    <md-input-container class="md-icon-float md-block">
+      <!-- Use floating label instead of placeholder -->
+        <label>Username</label>
+        <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+        <input ng-model="emp.username" type="text" ng-required="true">
+    </md-input-container>
+
+    <md-input-container class="md-icon-float md-block">
+        <label>Password</label>
+        <!--md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon-->
+        <input ng-model="emp.password" type="password" ng-required="true">
+    </md-input-container>
+    </md-content>
+    <md-button class="md-raised md-primary" ng-click="Emp(emp.username)" >Employee Login</md-button>
+    </div>

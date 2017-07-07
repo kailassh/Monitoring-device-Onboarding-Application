@@ -1,0 +1,46 @@
+<div class="cont">
+  <h1 style="text-align: center">Application Performance Analysis Page</h1>
+  <!-- h4>{{gen}}</h4 -->
+<table class="contTable" align="center">
+  <tr>
+    <th>ProjectID</th>
+    <th>Application Summary</th>
+    <th>Application Health KPI's</th>
+    <th>Appliaction Performance</th>
+    <th>Applicatipon Technology and Architecture</th>
+    <th>Current And Past Known Issues</th>
+    <th>Pre-Production Environment Testing Results</th>
+    <th>Performance Analysis</th>
+  </tr>
+	<tr ng-repeat="g in perf" ng-include="getperf(g)">
+	</tr>
+</table>
+
+<script type="text/ng-template" id="display">
+	<td>{{g.projectId}}</td>
+	<td>{{g.appsum}}</td>
+	<td>{{g.ahkpi}}</td>
+	<td>{{g.aperf}}</td>
+	<td>{{g.apptech}}</td>
+	<td>{{g.currpast}}</td>
+	<td>{{g.ppenv}}</td>
+	<td>{{g.perfa}}</td>
+	<td>
+		<md-button class="md-raised md-primary" ng-click="editperf(g)">EDIT</md-button>
+	</td>
+</script>
+<script type="text/ng-template" id="edit">
+	<td><input type="text" ng-model="selected_perf.projectId" /></td>
+    <td><input type="text" ng-model="selected_perf.appsum" /></td>
+    <td><input type="text" ng-model="selected_perf.ahkpi" /></td>
+    <td><input type="text" ng-model="selected_perf.aperf" /></td>
+    <td><input type="text" ng-model="selected_perf.apptech" /></td>
+    <td><input type="text" ng-model="selected_perf.currpast" /></td>
+    <td><input type="text" ng-model="selected_perf.ppenv" /></td>
+    <td><input type="text" ng-model="selected_perf.perfa" /></td>
+    <td>
+        <md-button class="md-raised md-primary" ng-click="saveperf($index)">Save</md-button>>
+        <md-button class="md-raised md-primary" ng-click="resetperf()">Cancel</md-button>>
+    </td>
+</script>
+</div>

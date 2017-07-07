@@ -1,0 +1,40 @@
+<div class="cont">
+  <h1 style="text-align: center">Alert Response Procedures Page</h1>
+  <!-- h4>{{gen}}</h4 -->
+<table class="contTable" align="center">
+  <tr>
+    <th>ProjectID</th>
+    <th>Host</th>
+    <th>Monitor</th>
+    <th>State</th>
+    <th>Possible Cause</th>
+    <th>Response/L1 Troubleshooting</th>
+  </tr>
+	<tr ng-repeat="g in res" ng-include="getres(g)">
+	</tr>
+</table>
+
+<script type="text/ng-template" id="display">
+	<td>{{g.projectId}}</td>
+	<td>{{g.host}}</td>
+	<td>{{g.monitor}}</td>
+	<td>{{g.state}}</td>
+	<td>{{g.pc}}</td>
+	<td>{{g.ts}}</td>
+	<td>
+		<md-button class="md-raised md-primary" ng-click="editres(g)">EDIT</md-button>
+	</td>
+</script>
+<script type="text/ng-template" id="edit">
+	<td><input type="text" ng-model="selected_res.projectId" /></td>
+	<td><input type="text" ng-model="selected_res.host" /></td>
+    <td><input type="text" ng-model="selected_res.monitor" /></td>
+    <td><input type="text" ng-model="selected_res.state" /></td>
+    <td><input type="text" ng-model="selected_res.pc" /></td>
+    <td><input type="text" ng-model="selected_res.ts" /></td>
+    <td>
+        <md-button class="md-raised md-primary" ng-click="saveres($index)">Save</md-button>>
+        <md-button class="md-raised md-primary" ng-click="resetres()">Cancel</md-button>>
+    </td>
+</script>
+</div>

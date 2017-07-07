@@ -1,0 +1,105 @@
+<h1>Alert Auto Remediation</h1>
+<div ng-controller="AppCtrl">
+  <div ng-if="tag2" ng-controller="EmpCtrl">
+  	<p>This form has already been entered</p>
+		<p>This is the data you have enetred</p>
+		<table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Monitor</th>
+        <th>Script</th>
+        <th>Command Timeout</th>
+        <th>Command</th>
+        <th>Clear Command</th>
+        <th>Environment Variables</th>
+        <th>Remarks</th>
+      </tr>
+    	<tr ng-repeat="g in auto">
+        <td>{{g.projectId}}</td>
+      	<td>{{g.mntr}}</td>
+      	<td>{{g.script}}</td>
+      	<td>{{g.ct}}</td>
+      	<td>{{g.cmnd}}</td>
+      	<td>{{g.cc}}</td>
+      	<td>{{g.ev}}</td>
+      	<td>{{g.rmks}}</td>
+    	</tr>
+		</table>
+  </div>
+
+	<div ng-if="!tag2" ng-controller="AppCtrl">
+  <div layout-gt-sm="row">
+  <md-input-container class="md-icon-float md-block">
+    <!-- Use floating label instead of placeholder -->
+    <label>Monitor</label>
+    <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+    <input ng-model="mntr" type="text" >
+  </md-input-container>
+  <md-input-container class="md-icon-float md-block">
+    <!-- Use floating label instead of placeholder -->
+    <label>Script</label>
+    <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+    <input ng-model="script" type="text" >
+  </md-input-container>
+  <md-input-container class="md-icon-float md-block">
+    <!-- Use floating label instead of placeholder -->
+    <label>Command Timeout</label>
+    <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+    <input ng-model="ct" type="text" >
+  </md-input-container>
+<!--select ng-model="server" ng-options="val as val.type for val in test"  aria-label="cmdbClass"></select-->
+<md-input-container class="md-icon-float md-block">
+  <!-- Use floating label instead of placeholder -->
+  <label>Command</label>
+  <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <input ng-model="cmnd" type="text">
+</md-input-container>
+<md-input-container class="md-icon-float md-block">
+  <!-- Use floating label instead of placeholder -->
+  <label>Clear Command</label>
+  <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <input ng-model="cc" type="text" >
+</md-input-container>
+  <md-input-container class="md-icon-float md-block">
+  <!-- Use floating label instead of placeholder -->
+  <label>Environment Variables</label>
+  <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <input ng-model="ev" type="text" >
+</md-input-container>
+<md-input-container class="md-icon-float md-block">
+  <!-- Use floating label instead of placeholder -->
+  <label>Remarks</label>
+  <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <input ng-model="rmks" type="text">
+</md-input-container>
+<md-button md-no-ink class="md-primary " ng-click="addaar()">Add Data</md-button>
+</div>
+<table>
+  <tr>
+    <th>Monitor</th>
+    <th>Script</th>
+    <th>Command Timeout</th>
+    <th>Command</th>
+    <th>Clear Command</th>
+    <th>Environment Variables</th>
+    <th>Remarks</th>
+  </tr>
+  <tr ng-repeat="person in aard">
+    <td>{{person.mntr}}</td>
+    <td>{{person.script}}</td>
+    <td>{{person.ct}}</td>
+    <td>{{person.cmnd}}</td>
+    <td>{{person.cc}}</td>
+    <td>{{person.ev}}</td>
+    <td>{{person.rmks}}</td>
+  </tr>
+</table>
+<div style="text-align:center">
+    <div ng-if="isDisabled">
+      <strong>Your Form has been submitted. Please proceed further.</strong>
+    </div>
+    <md-button class="md-raised md-primary" ng-click="aar()" ng-disabled="isDisabled">Submit</md-button>
+</div>
+
+</div>
+</div>

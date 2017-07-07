@@ -1,0 +1,31 @@
+<div class="cont">
+  <h1 style="text-align: center">Alert Notification and Thresholds Page</h1>
+  <!-- h4>{{gen}}</h4 -->
+<table class="contTable" align="center">
+  <tr>
+    <th>ProjectID</th>
+    <th>Notification Profile</th>
+    <th>Threshold Profile</th>
+  </tr>
+	<tr ng-repeat="g in ant" ng-include="getant(g)">
+	</tr>
+</table>
+
+<script type="text/ng-template" id="display">
+	<td>{{g.projectId}}</td>
+	<td>{{g.notpro}}</td>
+	<td>{{g.trp}}</td>
+	<td>
+		<md-button class="md-raised md-primary" ng-click="editant(g)">EDIT</md-button>
+	</td>
+</script>
+<script type="text/ng-template" id="edit">
+	<td><input type="text" ng-model="selected_ant.projectId" /></td>
+	<td><input type="text" ng-model="selected_ant.notpro" /></td>
+    <td><input type="text" ng-model="selected_ant.trp" /></td>
+    <td>
+        <md-button class="md-raised md-primary" ng-click="saveant($index)">Save</md-button>>
+        <md-button class="md-raised md-primary" ng-click="resetant()">Cancel</md-button>>
+    </td>
+</script>
+</div>

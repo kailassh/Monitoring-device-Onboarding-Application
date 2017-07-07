@@ -1,0 +1,37 @@
+<div class="cont">
+  <h1 style="text-align: center">Requirements Page</h1>
+  <!-- h4>{{gen}}</h4 -->
+<table class="contTable" align="center">
+	<tr>
+	<th>ProjectID</th>
+    <th>Business Requirements and Drivers</th>
+    <th>Application Summary</th>
+    <th>Application health KPI's</th>
+    <th>Infrastructure health KPI's</th>
+	</tr>
+	<tr ng-repeat="g in req" ng-include="getreq(g)">
+	</tr>
+</table>
+
+<script type="text/ng-template" id="display">
+	<td>{{g.projectId}}</td>
+	<td>{{g.brd}}</td>
+	<td>{{g.ask}}</td>
+	<td>{{g.ahk}}</td>
+	<td>{{g.ihk}}</td>
+	<td>
+		<md-button class="md-raised md-primary" ng-click="editreq(g)">EDIT</md-button>
+	</td>
+</script>
+<script type="text/ng-template" id="edit">
+	<td><input type="text" ng-model="selected_req.projectId" /></td>
+	<td><input type="text" ng-model="selected_req.brd" /></td>
+    <td><input type="text" ng-model="selected_req.ask" /></td>
+    <td><input type="text" ng-model="selected_req.ahk" /></td>
+    <td><input type="text" ng-model="selected_req.ihk" /></td>
+    <td>
+        <md-button class="md-raised md-primary" ng-click="savereq($index)">Save</md-button>>
+        <md-button class="md-raised md-primary" ng-click="resetreq()">Cancel</md-button>>
+    </td>
+</script>
+</div>

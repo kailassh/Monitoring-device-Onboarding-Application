@@ -1,0 +1,36 @@
+<div ng-controller="ProjCtrl">
+
+<h3>Project Submitted</h3>
+<table>
+  <tr ng-repeat="p in projid">
+    <td ng-click="project(p.projectId)">{{p.projectId}}</td>
+  </tr>
+</table>
+
+<h2>Forms Completed</h2>
+<table class= "table">
+<tr ng-repeat="p in cproj">
+<td>{{p.projectId}}</td>
+</tr>
+</table>
+
+
+<h2>New Form</h2>
+<md-content class="md-no-momentum">
+    <md-input-container class="md-icon-float md-block">
+      <!-- Use floating label instead of placeholder -->
+        <label>Enter JAPP ID</label>
+        <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+        <input ng-model="app.id" type="text" ng-required="true">
+    </md-input-container>
+
+    <md-input-container class="md-icon-float md-block">
+        <label>Enter Project Name</label>
+        <!--md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon-->
+        <input ng-model="app.name" type="text" ng-required="true">
+    </md-input-container>
+    </md-content>
+    <md-button class="md-raised md-primary" ng-click="form(app.id)">Create Form</md-button>
+</div>
+
+</div>

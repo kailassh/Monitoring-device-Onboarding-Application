@@ -1,0 +1,52 @@
+
+	<h1 style="text-align: center">Web Monitoring: Alert Notification and Tresholds</h1>
+	<div ng-controller="AppCtrl">
+
+
+<form>
+	<div ng-if="tag3" ng-controller="EmpCtrl">
+  	<p>This form has already been entered</p>
+		<p>This is the data you have enetred</p>
+		<table class="table">
+			<<tr>
+		    <th>ID</th>
+		    <th>Notification Profile</th>
+		    <th>Threshold Profile</th>
+		  </tr>
+			<tr ng-repeat="g in ant">
+				<td>{{g.projectId}}</td>
+				<td>{{g.notpro}}</td>
+				<td>{{g.trp}}</td>
+			</tr>
+		</table>
+  </div>
+
+	<div ng-if="!tag3" ng-controller="AppCtrl">
+<table align="center">
+<tr>
+	<td>
+		<label>Notification Profile </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="notpro" form="usrform" placeholder="Additional Comments or Remarks etc...">
+</textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>Threshold Profile </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="trp" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+</table>
+<div style="text-align:center">
+    <div ng-if="isDisabled">
+      <strong>Your Form has been submitted. Please proceed further.</strong>
+    </div>
+    <md-button class="md-raised md-primary" ng-click="alertnt()" ng-disabled="isDisabled">Submit</md-button>
+</div>
+</div>
+</form>
+</div>

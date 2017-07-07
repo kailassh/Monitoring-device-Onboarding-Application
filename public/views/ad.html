@@ -1,0 +1,15 @@
+<div>
+<h3>Users</h3>
+<table>
+  <tr ng-repeat="u in userid">
+    <td ng-click="users(u.empName)">{{u.empName}}</td>
+  </tr>
+</table>
+<h3>Project Forms submitted by the selected User</h3>
+<table>
+  <tr ng-repeat="u in usrproj">
+    <td ng-click="xx(u.projectId)">{{u.projectId}}</td>
+    <td>{{u.projectName}}</td>
+  </tr>
+</table>
+</div>

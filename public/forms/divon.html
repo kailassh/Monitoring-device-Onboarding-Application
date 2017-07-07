@@ -1,0 +1,144 @@
+
+<h1>Device OnBoarding</h1>
+<!-- h1>Device OnBoarding</h1 -->
+<div ng-controller="AppCtrl" layout="column" layout-padding ng-cloak class="cont">
+
+  <div ng-if="tag7" ng-controller="EmpCtrl">
+  	<p>This form has already been entered</p>
+		<p>This is the data you have enetred</p>
+		<table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Hostname</th>
+        <th>CMDB Class</th>
+        <th>Type</th>
+        <th>IP Address</th>
+        <th>ENV</th>
+        <th>Production State</th>
+        <th>OS Product Location</th>
+        <th>IT Function</th>
+        <th>CI Support Group</th>
+        <th>Additional Comments</th>
+      </tr>
+
+    	<tr ng-repeat="g in dev">
+        <td>{{g.projectId}}</td>
+      	<td>{{g.hstname}}</td>
+      	<td>{{g.cmdb}}</td>
+      	<td>{{g.server}}</td>
+      	<td>{{g.ip}}</td>
+      	<td>{{g.env}}</td>
+      	<td>{{g.prodstate}}</td>
+      	<td>{{g.os}}</td>
+      	<td>{{g.itfunc}}</td>
+      	<td>{{g.ci}}</td>
+      	<td>{{g.addcmt}}</td>
+    	</tr>
+		</table>
+  </div>
+
+  <div ng-if="!tag7" ng-controller="AppCtrl">
+          <div layout-gt-sm="row">
+          <md-input-container class="md-icon-float md-block">
+            <!-- Use floating label instead of placeholder -->
+            <label>Hostname</label>
+            <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+            <input ng-model="hstname" type="text" >
+          </md-input-container>
+          <md-input-container class="md-icon-float md-block">
+            <!-- Use floating label instead of placeholder -->
+            <label>CMDB Class</label>
+            <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <md-select ng-change="cmd(cmdb)" ng-model="cmdb">
+            <md-option ng-repeat="val in testing" ng-value="val.class">{{val.class}}</md-option>
+          </md-select>
+          </md-input-container>
+          <md-input-container>
+            <label>Type</label>
+          <md-select ng-model="server">
+            <md-option ng-repeat="val in test" ng-value="val.type">{{val.type}}</md-option>
+          </md-select>
+          </md-input-container>
+        <!--select ng-model="server" ng-options="val as val.type for val in test"  aria-label="cmdbClass"></select-->
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>IP Address</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="ip" type="text">
+        </md-input-container>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>ENV</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="env" type="text" >
+        </md-input-container>
+          <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Production State</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="prodstate" type="text" >
+        </md-input-container>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>OS Product Location</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="os" type="text">
+        </md-input-container>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>IT Function</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="itfunc" type="text" >
+        </md-input-container>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>CI SUpport Group</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="ci" type="text">
+        </md-input-container>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Additional Comments</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="addcmt" type="text" >
+        </md-input-container>
+        <md-button md-no-ink class="md-primary " ng-click="addData()">Add Data</md-button>
+        </div>
+
+
+      <table>
+        <tr>
+          <th>Host Name</th>
+          <th>Cmdb Class</th>
+          <th>Type</th>
+          <th>Ip Address</th>
+          <th>ENV</th>
+          <th>Production State</th>
+          <th>OS Product Location</th>
+          <th>IT Function</th>
+          <th>Cl Support Group</th>
+          <th>Additional Comments</th>
+        </tr>
+        <tr ng-repeat="person in divon">
+          <td>{{person.hstname}}</td>
+          <td>{{person.cmdb}}</td>
+          <td>
+            {{person.server}}
+        </td>
+        <td>{{person.ip}}</td>
+        <td>{{person.env}}</td>
+        <td>{{person.prodstate}}</td>
+        <td>{{person.os}}</td>
+        <td>{{person.itfunc}}</td>
+        <td>{{person.ci}}</td>
+        <td>{{person.addcmt}}</td>
+        </tr>
+      </table>
+      <div style="text-align:center">
+          <div ng-if="isDisabled">
+            <strong>Your Form has been submitted. Please proceed further.</strong>
+          </div>
+          <md-button class="md-raised md-primary" ng-click="divonb()" ng-disabled="isDisabled" >Submit</md-button>
+      </div>
+</div>
+</div>

@@ -1,0 +1,40 @@
+<div class="cont">
+  <h1 style="text-align: center">Log Monitoring Procedures Page</h1>
+  <!-- h4>{{gen}}</h4 -->
+<table class="contTable" align="center">
+  <tr>
+    <th>ProjectID</th>
+    <th>Host Information</th>
+    <th>Data Collection</th>
+    <th>Data Access</th>
+    <th>Data Information</th>
+    <th>Important Information</th>
+  </tr>
+	<tr ng-repeat="g in log" ng-include="getlog(g)">
+	</tr>
+</table>
+
+<script type="text/ng-template" id="display">
+	<td>{{g.projectId}}</td>
+	<td>{{g.hstinfo}}</td>
+	<td>{{g.dc}}</td>
+	<td>{{g.da}}</td>
+	<td>{{g.di}}</td>
+	<td>{{g.imp}}</td>
+	<td>
+		<md-button class="md-raised md-primary" ng-click="editlog(g)">EDIT</md-button>
+	</td>
+</script>
+<script type="text/ng-template" id="edit">
+	<td><input type="text" ng-model="selected_log.projectId" /></td>
+	<td><input type="text" ng-model="selected_log.hstinfo" /></td>
+    <td><input type="text" ng-model="selected_log.dc" /></td>
+    <td><input type="text" ng-model="selected_log.da" /></td>
+    <td><input type="text" ng-model="selected_log.di" /></td>
+    <td><input type="text" ng-model="selected_log.imp" /></td>
+    <td>
+        <md-button class="md-raised md-primary" ng-click="savelog($index)">Save</md-button>>
+        <md-button class="md-raised md-primary" ng-click="resetlog()">Cancel</md-button>>
+    </td>
+</script>
+</div>

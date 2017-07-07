@@ -1,0 +1,719 @@
+<h1>Web App Advanced</h1>
+<div ng-controller="AppCtrl">
+  <h3>Website Monitoring(Page Analyser)</h3>
+  <table>
+    <tr>
+      <th>Monitor Type</th>
+      <th>Display Name</th>
+      <th>Website URL</th>
+      <th>Website Type</th>
+      <th>Check Frequency</th>
+      <th>Timeout(secs)</th>
+      <th>Use IPV6</th>
+      <th>Poller Locations</th>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Web Page Analyser</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="wpa" type="text">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Enter Display Name</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="dn" type="text">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Enter Website Address</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="wurl" type="text">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <label>Select</label>
+        <md-select ng-model="wtype">
+          <md-option ng-repeat="val in wt" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <label>Select</label>
+        <md-select ng-model="cfreq">
+          <md-option ng-repeat="val in cf" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Enter Timeout in secs</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="timeout" type="text">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container >
+          <label>Yes/No</label>
+        <md-select ng-model="yn1">
+          <md-option ng-repeat="val in yesno" ng-value="val.name">{{val.name}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <label>Select</label>
+        <md-select ng-model="poller">
+          <md-option ng-repeat="val in pl" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <th rowspan="2">HTTP Configuration</th>
+      <th>HTTP Method</th>
+      <th>Additional HTTP Headers</th>
+      <th>User Agent</th>
+      <th>Authentication User</th>
+      <th>Authenticaion Pass</th>
+      <th>Use Authoritative Name Server</th>
+      <th>Accepted HTTP status codes</th>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container>
+          <label>Select</label>
+        <md-select ng-model="httpmthd">
+          <md-option ng-repeat="val in hm" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="ahttp" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="ua" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="au" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="ap" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container >
+          <label>Yes/No</label>
+        <md-select ng-model="yn2">
+          <md-option ng-repeat="val in yesno" ng-value="val.name">{{val.name}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="asc" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <th rowspan="2">Content Match</th>
+      <th>Keyword Presence</th>
+      <th>Keyword Presence Status</th>
+      <th>Keyword Non-Existence</th>
+      <th>Keyword Non-Existence Status</th>
+      <th>Case Sensitive</th>
+      <th>Match Regular Expression</th>
+      <th>Match Regular Expression Status</th>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Enter Keyword String</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="kp" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <label>Select</label>
+        <md-select ng-model="kps">
+          <md-option ng-repeat="val in kstatus" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Enter Keyword String</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="kne" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <label>Select</label>
+        <md-select ng-model="knps">
+          <md-option ng-repeat="val in kstatus" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container >
+          <label>Yes/No</label>
+        <md-select ng-model="yn3">
+          <md-option ng-repeat="val in yesno" ng-value="val.name">{{val.name}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="mre" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <label>Select</label>
+        <md-select ng-model="mres">
+          <md-option ng-repeat="val in kstatus" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <th rowspan="2">Configuration Profiles</th>
+      <th>Threshold and Availability</th>
+      <th>Notification Profile</th>
+      <th>User Groups</th>
+      <th colspan="2">Actions</th>
+      <th colspan="2">Action Execution</th>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Default Threshold URL</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="taa" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Default Profile</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="np" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="ug" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td colspan="2">
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="actions" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td colspan="2">
+        <md-input-container >
+          <label>Select</label>
+        <md-select ng-model="ae">
+          <md-option ng-repeat="val in acex" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+    </tr>
+  </table>
+
+
+<h3>Website Synthetic Transaction Monitoring(Recorder or Real Browser)</h3>
+  <table>
+    <tr>
+      <th colspan="8">General Information</th>
+    </tr>
+    <tr>
+      <th>Monitor Type</th>
+      <th>Display Name</th>
+      <th>Website URL</th>
+      <th>Website Type</th>
+      <th>Check Frequency</th>
+      <th>Timeout(secs)</th>
+      <th>Use IPV6</th>
+      <th>Poller Locations</th>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Web SEQ Trans</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="wpa" type="text">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Enter Display Name</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="dn" type="text">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Enter Website Address</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="wurl" type="text">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <label>Select</label>
+        <md-select ng-model="wtype">
+          <md-option ng-repeat="val in wt" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <label>Select</label>
+        <md-select ng-model="cfreq">
+          <md-option ng-repeat="val in cf" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Enter Timeout in secs</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="timeout" type="text">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container >
+          <label>Yes/No</label>
+        <md-select ng-model="yn1">
+          <md-option ng-repeat="val in yesno" ng-value="val.name">{{val.name}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <label>Select</label>
+        <md-select ng-model="poller">
+          <md-option ng-repeat="val in pl" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <th rowspan="2">HTTP Configuration</th>
+      <th>HTTP Method</th>
+      <th>Additional HTTP Headers</th>
+      <th>User Agent</th>
+      <th>Authentication User</th>
+      <th>Authenticaion Pass</th>
+      <th>Use Authoritative Name Server</th>
+      <th>Accepted HTTP status codes</th>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container>
+          <label>Select</label>
+        <md-select ng-model="httpmthd">
+          <md-option ng-repeat="val in hm" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="ahttp" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="ua" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="au" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="ap" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container >
+          <label>Yes/No</label>
+        <md-select ng-model="yn2">
+          <md-option ng-repeat="val in yesno" ng-value="val.name">{{val.name}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="asc" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <th rowspan="2">Content Match</th>
+      <th>Keyword Presence</th>
+      <th>Keyword Presence Status</th>
+      <th>Keyword Non-Existence</th>
+      <th>Keyword Non-Existence Status</th>
+      <th>Case Sensitive</th>
+      <th>Match Regular Expression</th>
+      <th>Match Regular Expression Status</th>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Enter Keyword String</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="kp" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <label>Select</label>
+        <md-select ng-model="kps">
+          <md-option ng-repeat="val in kstatus" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Enter Keyword String</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="kne" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <label>Select</label>
+        <md-select ng-model="knps">
+          <md-option ng-repeat="val in kstatus" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container >
+          <label>Yes/No</label>
+        <md-select ng-model="yn3">
+          <md-option ng-repeat="val in yesno" ng-value="val.name">{{val.name}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="mre" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <label>Select</label>
+        <md-select ng-model="mres">
+          <md-option ng-repeat="val in kstatus" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <th rowspan="2">Configuration Profiles</th>
+      <th>Threshold and Availability</th>
+      <th>Notification Profile</th>
+      <th>User Groups</th>
+      <th colspan="2">Actions</th>
+      <th colspan="2">Action Execution</th>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Default Threshold URL</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="taa" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <label>Default Profile</label>
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="np" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+
+      <td>
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="ug" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td colspan="2">
+        <md-input-container class="md-icon-float md-block">
+          <!-- Use floating label instead of placeholder -->
+          <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+          <input ng-model="actions" type="text" aria-label="ahttp">
+        </md-input-container>
+      </td>
+      <td colspan="2">
+        <md-input-container >
+          <label>Select</label>
+        <md-select ng-model="ae">
+          <md-option ng-repeat="val in acex" ng-value="val.class">{{val.class}}</md-option>
+        </md-select>
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="8">Transaction Steps</th>
+    </tr>
+    <tr>
+      <th>Step#</th>
+      <th>Step Name</th>
+      <th colspan="4">Transaction Step Details</th>
+      <th colspan="2">Keyword Content Match</th>
+    </tr>
+    <tr>
+      <th>Step 1</th>
+      <td><textarea placeholder="Load Client App" ng-model="s1"></textarea></td>
+      <td colspan="4">
+        <textarea cols="75" ng-model="t1">
+        <ol start="1">
+        <li>Launch Internet Explorer</li>
+        <li>URL:https://test.server.com/ClientApp</li>
+      </ol>
+      </textarea>
+    </td>
+    <td colspan="2">
+      <md-input-container class="md-icon-float md-block">
+        <!-- Use floating label instead of placeholder -->
+        <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+        <input ng-model="kcm" type="text" aria-label="ahttp">
+      </md-input-container>
+    </td>
+    </tr>
+    <tr>
+      <th>Step 2</th>
+      <td><textarea placeholder="Load Client App" ng-model="s2"></textarea></td>
+      <td colspan="4">
+      <textarea cols="75" ng-model="t2">
+        <ol start="3">
+        <li>Login Name: Test User Password: testpass</li>
+        <li>Click: Submit</li>
+      </ol>
+      </textarea>
+    </td>
+    <td colspan="2">
+      <md-input-container class="md-icon-float md-block">
+        <!-- Use floating label instead of placeholder -->
+        <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+        <input ng-model="kcm2" type="text" aria-label="ahttp">
+      </md-input-container>
+    </td>
+    </tr>
+    <tr>
+      <th>Step 3</th>
+      <td><textarea placeholder="Click Accounts" ng-model="s3"></textarea></td>
+      <td colspan="4">
+      <textarea cols="75" ng-model="t3">
+        <ol start="5">
+        <li>Click: Acount # Field</li>
+        <li>Enter: 12345678901234567</li>
+        <li>Click: GO</li>
+      </ol>
+      </textarea>
+    </td>
+    <td colspan="2">
+      <md-input-container class="md-icon-float md-block">
+        <!-- Use floating label instead of placeholder -->
+        <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+        <input ng-model="kcm3" type="text" aria-label="ahttp">
+      </md-input-container>
+    </td>
+    </tr>
+    <tr>
+      <th>Step 4</th>
+      <td><textarea placeholder="Click Account Details" ng-model="s4"></textarea></td>
+      <td colspan="4">
+      <textarea cols="75" ng-model="t4">
+        <ol start="8">
+        <li>Click: Account Details Tab</li>
+      </ol>
+    </textarea>
+    </td>
+    <td colspan="2">
+      <md-input-container class="md-icon-float md-block">
+        <!-- Use floating label instead of placeholder -->
+        <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+        <input ng-model="kcm4" type="text" aria-label="ahttp">
+      </md-input-container>
+    </td>
+    </tr>
+    <tr>
+      <th>Step 5</th>
+      <td><textarea placeholder="Click Customer Info" ng-model="s5"></textarea></td>
+      <td colspan="4">
+      <textarea cols="75" ng-model="t5">
+        <ol start="9">
+        <li>Click: Customer Info</li>
+      </ol>
+      </textarea>
+    </td>
+    <td colspan="2">
+      <md-input-container class="md-icon-float md-block">
+        <!-- Use floating label instead of placeholder -->
+        <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+        <input ng-model="kcm5" type="text" aria-label="ahttp">
+      </md-input-container>
+    </td>
+    </tr>
+    <tr>
+      <th>Step 6</th>
+      <td><textarea placeholder="Click Personal Info" ng-model="s6"></textarea></td>
+      <td colspan="4">
+      <textarea cols="75" ng-model="t6">
+        <ol start="10">
+        <li>Click: Customer Info -> Personel Info</li>
+      </ol>
+    </textarea>
+    </td>
+    <td colspan="2">
+      <md-input-container class="md-icon-float md-block">
+        <!-- Use floating label instead of placeholder -->
+        <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+        <input ng-model="kcm6" type="text" aria-label="ahttp">
+      </md-input-container>
+    </td>
+    </tr>
+    <tr>
+      <th>Step 7</th>
+      <td><textarea placeholder="Close Window" ng-model="s7"></textarea></td>
+      <td colspan="4">
+      <textarea cols="75" ng-model="t7">
+        <ol start="11">
+        <li>Close Window</li>
+      </ol>
+    </textarea>
+    </td>
+    <td colspan="2">
+      <md-input-container class="md-icon-float md-block">
+        <!-- Use floating label instead of placeholder -->
+        <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+        <input ng-model="kcm7" type="text" aria-label="ahttp">
+      </md-input-container>
+    </td>
+    </tr>
+    <tr>
+      <th>Step 8</th>
+      <td><textarea placeholder="Logout of ClientApp" ng-model="s8"></textarea></td>
+      <td colspan="4">
+      <textarea cols="75" ng-model="t8">
+        <ol start="12">
+        <li>Click: Logout -> Logout of App</li>
+      </ol>
+    </textarea>
+    </td>
+    <td colspan="2">
+      <md-input-container class="md-icon-float md-block">
+        <!-- Use floating label instead of placeholder -->
+        <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+        <input ng-model="kcm8" type="text" aria-label="ahttp">
+      </md-input-container>
+    </td>
+    </tr>
+    <tr>
+      <th>Step 9</th>
+      <td><textarea placeholder="Click OK" ng-model="s9"></textarea></td>
+      <td colspan="4">
+      <textarea cols="75" ng-model="t9">
+        <ol start="13">
+        <li>Click OK</li>
+      </ol>
+    </textarea>
+    </td>
+    <td colspan="2">
+      <md-input-container class="md-icon-float md-block">
+        <!-- Use floating label instead of placeholder -->
+        <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+        <input ng-model="kcm9" type="text" aria-label="ahttp">
+      </md-input-container>
+    </td>
+    </tr>
+    <tr>
+      <th>Step 10</th>
+      <td><textarea placeholder="Close Browser" ng-model="s10"></textarea></td>
+      <td colspan="4">
+      <textarea cols="75" ng-model="t10">
+        <ol start="14">
+        <li>Close Internet Explorer</li>
+      </ol>
+    </textarea>
+    </td>
+    <td colspan="2">
+      <md-input-container class="md-icon-float md-block">
+        <!-- Use floating label instead of placeholder -->
+        <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+        <input ng-model="kcm10" type="text" aria-label="ahttp">
+      </md-input-container>
+    </td>
+    </tr>
+  </table>
+</div>

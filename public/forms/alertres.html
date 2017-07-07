@@ -1,0 +1,84 @@
+<div ng-controller="AppCtrl">
+  <h1>Alert Response Procedures</h1>
+  <div ng-if="tag5" ng-controller="EmpCtrl">
+  	<p>This form has already been entered</p>
+		<p>This is the data you have enetred</p>
+		<table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Host</th>
+        <th>Monitor</th>
+        <th>State</th>
+        <th>Possible Cause</th>
+        <th>Response/L1 Troubleshooting</th>
+      </tr>
+      <tr ng-repeat="g in res">
+        <td>{{g.projectId}}</td>
+      	<td>{{g.host}}</td>
+      	<td>{{g.monitor}}</td>
+      	<td>{{g.state}}</td>
+      	<td>{{g.pc}}</td>
+      	<td>{{g.ts}}</td>
+      </tr>
+		</table>
+  </div>
+
+	<div ng-if="!tag5" ng-controller="AppCtrl">
+  <div layout-gt-sm="row">
+  <md-input-container class="md-icon-float md-block">
+    <!-- Use floating label instead of placeholder -->
+    <label>Host</label>
+    <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+    <input ng-model="host" type="text">
+  </md-input-container>
+  <md-input-container class="md-icon-float md-block">
+    <!-- Use floating label instead of placeholder -->
+    <label>Monitor</label>
+    <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+    <input ng-model="monitor" type="text">
+  </md-input-container>
+  <md-input-container class="md-icon-float md-block">
+    <!-- Use floating label instead of placeholder -->
+    <label>State</label>
+    <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+    <input ng-model="state" type="text">
+  </md-input-container>
+  <md-input-container class="md-icon-float md-block">
+    <!-- Use floating label instead of placeholder -->
+    <label>Posibble Cause</label>
+    <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+    <input ng-model="pc" type="text">
+  </md-input-container>
+  <md-input-container class="md-icon-float md-block">
+    <!-- Use floating label instead of placeholder -->
+    <label>Response/l1 Troubleshooting</label>
+    <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+    <input ng-model="ts" type="text">
+  </md-input-container>
+  <md-button md-no-ink class="md-primary " ng-click="addPro()">Add Data</md-button>
+</div>
+
+<table>
+  <tr>
+    <th>Host</th>
+    <th>Monitor</th>
+    <th>State</th>
+    <th>Possible Cause</th>
+    <th>Response/l1 Troubleshooting</th>
+  </tr>
+  <tr ng-repeat="person in arp">
+    <td>{{person.host}}</td>
+    <td>{{person.monitor}}</td>
+    <td>{{person.state}}</td>
+    <td>{{person.pc}}</td>
+    <td>{{person.ts}}</td>
+  </tr>
+</table>
+<div style="text-align:center">
+    <div ng-if="isDisabled">
+      <strong>Your Form has been submitted. Please proceed further.</strong>
+    </div>
+    <md-button class="md-raised md-primary" ng-click="alertres()" ng-disabled="isDisabled" >Submit</md-button>
+</div>
+</div>
+</div>

@@ -1,0 +1,110 @@
+
+	<h1 style="text-align: center">Application Performance Analysis</h1>
+<div ng-controller="AppCtrl">
+
+
+<form>
+	<div ng-if="tag6" ng-controller="EmpCtrl">
+  	<p>This form has already been entered</p>
+		<p>This is the data you have enetred</p>
+		<table class="table">
+			<<tr>
+		    <th>ID</th>
+		    <th>Application Summary</th>
+		    <th>Application Health KPI's</th>
+		    <th>Appliaction Performance</th>
+		    <th>Applicatipon Technology and Architecture</th>
+		    <th>Current And Past Known Issues</th>
+		    <th>Pre-Production Environment Testing Results</th>
+		    <th>Performance Analysis</th>
+		  </tr>
+			<tr ng-repeat="g in perf">
+				<td>{{g.projectId}}</td>
+				<td>{{g.appsum}}</td>
+				<td>{{g.ahkpi}}</td>
+				<td>{{g.aperf}}</td>
+				<td>{{g.apptech}}</td>
+				<td>{{g.currpast}}</td>
+				<td>{{g.ppenv}}</td>
+				<td>{{g.perfa}}</td>
+			</tr>
+		</table>
+  </div>
+
+	<div ng-if="!tag6" ng-controller="AppCtrl">
+<table align="center">
+<tr>
+	<td>
+		<label>Application Summary  </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="appsum" form="usrform" placeholder="Additional Comments or Remarks etc...">
+</textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>Application Health KPI's  </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="ahkpi" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>Application Performance  </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="aperf" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>Application Technology and Architecture </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="apptech" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>Current and Past Known Issues</label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="currpast" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>Pre-Production Environment Testing Results </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="ppenv" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>Performance Analysis </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="perfa" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>Architecture Diagram  </label>
+	</td>
+	<td>
+		<input type="file" id="myFile">
+	</td>
+</tr>
+</table>
+<div style="text-align:center">
+    <div ng-if="isDisabled">
+      <strong>Your Form has been submitted. Please proceed further.</strong>
+    </div>
+    <md-button class="md-raised md-primary" ng-click="appperf()" ng-disabled="isDisabled" >Submit</md-button>
+</div>
+</div>
+</form>
+</div>

@@ -1,0 +1,112 @@
+<div ng-controller="AppCtrl">
+<h1>Alert Notification Rules</h1>
+<div ng-if="tag4"ng-controller="EmpCtrl">
+  <p>This form has already been entered</p>
+  <p>This is the data you have enetred</p>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Severity</th>
+      <th>Send Clear</th>
+      <th>Only Initial Occurence</th>
+      <th>Delay Alert</th>
+      <th>Repeat Alert</th>
+      <th>Recipient Address</th>
+      <th>Remarks</th>
+    </tr>
+    <tr ng-repeat="g in not">
+      <td>{{g.projectId}}</td>
+    	<td>{{g.svrt}}</td>
+    	<td>{{g.yn1}}</td>
+    	<td>{{g.yn2}}</td>
+    	<td>{{g.da}}</td>
+    	<td>{{g.ra}}</td>
+    	<td>{{g.address}}</td>
+    	<td>{{g.rmks}}</td>
+    </tr>
+  </table>
+</div>
+
+<div ng-if="!tag4" ng-controller="AppCtrl">
+  <div layout-gt-sm="row">
+<md-input-container >
+  <label>Severity</label>
+<md-select ng-model="svrt">
+  <md-option ng-repeat="val in severity" ng-value="val.class">{{val.class}}</md-option>
+</md-select>
+</md-input-container>
+<md-input-container >
+  <label>Yes/No</label>
+<md-select ng-model="yn1">
+  <md-option ng-repeat="val in yesno" ng-value="val.name">{{val.name}}</md-option>
+</md-select>
+</md-input-container>
+<md-input-container >
+  <label>Yes/No</label>
+<md-select ng-model="yn2">
+  <md-option ng-repeat="val in yesno" ng-value="val.name">{{val.name}}</md-option>
+</md-select>
+</md-input-container>
+<md-input-container class="md-icon-float md-block">
+  <!-- Use floating label instead of placeholder -->
+  <label>Delay Alert</label>
+  <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <input ng-model="da" type="text" ng-init="da='300sec'">
+</md-input-container>
+<md-input-container class="md-icon-float md-block">
+  <!-- Use floating label instead of placeholder -->
+  <label>Repeat Alert</label>
+  <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <input ng-model="ra" type="text" ng-init="ra='0sec'">
+</md-input-container>
+<md-input-container class="md-icon-float md-block">
+  <!-- Use floating label instead of placeholder -->
+  <label>Recepient Address</label>
+  <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <input ng-model="address" type="text">
+</md-input-container>
+<md-input-container class="md-icon-float md-block">
+  <!-- Use floating label instead of placeholder -->
+  <label>Remarks</label>
+  <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <input ng-model="rmks" type="text">
+</md-input-container>
+<md-button md-no-ink class="md-primary " ng-click="addRule()">Add Data</md-button>
+</div>
+
+
+<table>
+  <tr>
+    <th>Severity</th>
+    <th>Send Clear</th>
+    <th>ONLY Initial Assurance</th>
+    <th>Delay Alert</th>
+    <th>Repeat Alert</th>
+    <th>Recipeient Address</th>
+    <th>Remarks</th>
+  </tr>
+  <tr ng-repeat="data in alert">
+    <td>
+      {{data.svrt}}
+    </td>
+    <td>
+      {{data.yn1}}
+    <td>
+      {{data.yn2}}
+    </td>
+    <td>
+      {{data.da}}
+    </td>
+    <td>{{data.ra}}</td>
+    <td>{{data.address}}</td>
+    <td>{{data.rmks}}</td>
+  </tr>
+</table>
+<div style="text-align:center">
+    <div ng-if="isDisabled">
+      <strong>Your Form has been submitted. Please proceed further.</strong>
+    </div>
+    <md-button class="md-raised md-primary" ng-click="alertnot()" ng-disabled="isDisabled" >Submit</md-button>
+</div>
+</div>
+</div>

@@ -1,0 +1,64 @@
+<div ng-controller="AdminCtrl">
+
+
+<div class="cont">
+  <h1 style="text-align: center">Alert Notification Rules Page</h1>
+  <!-- h4>{{gen}}</h4 -->
+<table class="contTable" align="center">
+  <tr>
+    <th>ProjectID</th>
+    <th>Severity</th>
+    <th>Send Clear</th>
+    <th>Only Initial Occurence</th>
+    <th>Delay Alert</th>
+    <th>Repeat Alert</th>
+    <th>Recipient Address</th>
+    <th>Remarks</th>
+  </tr>
+	<tr ng-repeat="g in not" ng-include="getnot(g)">
+	</tr>
+</table>
+
+<script type="text/ng-template" id="display">
+	<td>{{g.projectId}}</td>
+	<td>{{g.svrt}}</td>
+	<td>{{g.yn1}}</td>
+	<td>{{g.yn2}}</td>
+	<td>{{g.da}}</td>
+	<td>{{g.ra}}</td>
+	<td>{{g.address}}</td>
+	<td>{{g.rmks}}</td>
+	<td>
+		<md-button class="md-raised md-primary" ng-click="editnot(g)">EDIT</md-button>
+	</td>
+</script>
+<script type="text/ng-template" id="edit">
+	<td><input type="text" ng-model="selected_not.projectId" /></td>
+    <td><input type="text" ng-model="selected_not.svrt" /></td>
+    <td><input type="text" ng-model="selected_not.yn1" /></td>
+    <td><input type="text" ng-model="selected_not.yn2" /></td>
+    <td><input type="text" ng-model="selected_not.da" /></td>
+    <td><input type="text" ng-model="selected_not.ra" /></td>
+    <td><input type="text" ng-model="selected_not.address" /></td>
+    <td><input type="text" ng-model="selected_not.rmks" /></td>
+    <td>
+        <md-button class="md-raised md-primary" ng-click="savenot($index)">Save</md-button>>
+        <md-button class="md-raised md-primary" ng-click="resetnot()">Cancel</md-button>>
+    </td>
+</script>
+<h3>Add Data to severity</h3>
+<md-input-container class="md-icon-float md-block">
+  <!-- Use floating label instead of placeholder -->
+  <label>Severity</label>
+  <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <input ng-model="svrty" type="text" ng-required="true" >
+</md-input-container>
+<div style="text-align:center">
+    <div ng-if="isDisabled">
+      <strong>Your data has been added. Add more or proceed further</strong>
+    </div>
+    <md-button class="md-raised md-primary" ng-click="addSev()" >Submit</md-button>
+</div>
+
+</div>
+</div>

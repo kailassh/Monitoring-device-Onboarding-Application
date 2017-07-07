@@ -1,0 +1,62 @@
+
+	<h1 style="text-align: center">Business Requirements, Application Summary and KPI'S</h1>
+<div ng-controller="AppCtrl">
+
+
+<form>
+	<div ng-if="tag10" ng-controller="EmpCtrl">
+  	<p>This form has already been entered</p>
+		<p>This is the data you have enetred</p>
+		<table class="table">
+			<tr>
+		    <th>ProjectID</th>
+		    <th>Web URL</th>
+		    <th>SOAP Monitor</th>
+		    <th>SSL Certificate Monitor</th>
+		  </tr>
+			<tr ng-repeat="g in web">
+				<td>{{g.projectId}}</td>
+				<td>{{g.wurl}}</td>
+				<td>{{g.soapm}}</td>
+				<td>{{g.sslcm}}</td>
+			</tr>
+		</table>
+  </div>
+
+	<div ng-if="!tag10" ng-controller="AppCtrl">
+<table align="center">
+<tr>
+	<td>
+		<label>Web URL or REST API </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="wurl" form="usrform" placeholder="Additional Comments or Remarks etc...">
+</textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>SOAP Monitor  </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="soapm" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label>SSL Certificate Monitor  </label>
+	</td>
+	<td>
+		<textarea rows="4" cols="50" ng-model="sslcm" form="usrform" placeholder="Additional Comments or Remarks etc..."></textarea>
+	</td>
+</tr>
+</table>
+<div style="text-align:center">
+    <div ng-if="isDisabled">
+      <strong>Your Form has been submitted. Please proceed further.</strong>
+    </div>
+    <md-button class="md-raised md-primary" ng-click="webapp()" ng-disabled="isDisabled" >Submit</md-button>
+</div>
+</div>
+</form>
+</div>

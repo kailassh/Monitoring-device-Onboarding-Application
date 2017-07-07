@@ -1,0 +1,151 @@
+<div layout="column" style=" height: 1000px;" ng-cloak>
+  <section layout="row" flex>
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4" md-is-locked-open>
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Service Offerings <md-button ng-click="toggleLeft()" class="md-accent"><pre>            X </pre></md-button></h1>
+      </md-toolbar>
+      <md-content layout-margin>
+        <md-checkbox ng-model="dat.two" aria-label="Disable?" style="margin: 5px;">
+          Unified Infrastructure Monitoring
+        </md-checkbox>
+
+        <md-checkbox ng-model="dat.three" aria-label="Disable?" style="margin: 5px;">
+          Website and Application Monitoring
+        </md-checkbox>
+
+        <md-checkbox ng-model="dat.four" aria-label="Disable?" style="margin: 5px;">
+        Log Monitoring and Analysis
+        </md-checkbox>
+
+        <md-checkbox ng-model="dat.five" aria-label="Disable?" style="margin: 5px;">
+          Application Performance Analysis
+        </md-checkbox>
+
+        <md-checkbox ng-model="dat.six" aria-label="Disable?" style="margin: 5px;">
+        CCP Openstack Monitoring
+        </md-checkbox>
+
+        <md-checkbox ng-model="dat.seven" aria-label="Disable?" style="margin: 5px;">
+        Database Insight Monitoring
+        </md-checkbox>
+
+        <md-checkbox ng-model="dat.eight" aria-label="Disable?" style="margin: 5px;">
+          Network Performance Monitoring
+        </md-checkbox>
+
+        <p><strong><u>Note: Check for enabling services</u></strong></p>
+
+        <div ng-if="dat.two" ng-repeat = "data in data2">
+          <md-button  ng-click="addTab(data)" class="md-raised ">
+            {{data}}
+          </md-button>
+        </div>
+        <div ng-if="dat.three" ng-repeat = "data in data3">
+          <md-button  class="md-raised " ng-click="addTab(data)">
+            {{data}}
+          </md-button>
+        </div>
+        <div ng-if="dat.four" ng-repeat="data in data4">
+          <md-button  class="md-raised " ng-click="addTab(data)">
+            {{data}}
+          </md-button>
+        </div>
+        <div ng-if="dat.five" ng-repeat="data in data5">
+          <md-button class="md-raised " ng-click="addTab(data)">
+            {{data}}
+          </md-button>
+        </div>
+        <div ng-if="dat.six" ng-repeat="data in data6">
+          <md-button  class="md-raised " ng-click="addTab(data)">
+            {{data}}
+          </md-button>
+        </div>
+        <div ng-if="dat.seven" ng-repeat="data in data7">
+          <md-button  class="md-raised " ng-click="addTab(data)">
+            {{data}}
+          </md-button>
+        </div>
+        <div ng-if="dat.eight" ng-repeat="data in data8">
+          <md-button  class="md-raised " ng-click="addTab(data)">
+            {{data}}
+          </md-button>
+        </div>
+      </md-content>
+    </md-sidenav>
+    <md-content class="md-padding" flex layout-padding>
+      <div layout="column" layout-align="top center">
+
+        <img src="https://company-profile-images.s3.amazonaws.com/images/434718/995531/logo/juniper-networks-logo.jpg " alt="">
+        <h1>Monitoring as a Service - Uniform Platform and Service-Centric Approach</h1>
+        <div>
+          <md-button ng-click="toggleLeft()" class="md-raised">
+            Show Service Offerings
+          </md-button>
+          <md-button ng-click="exportData()" class="md-raised md-primary">
+            Export as Excel Sheet
+          </md-button>
+        </div>
+      </div>
+      <div  >
+        <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect md-dynamic-height>
+          <md-tab ng-repeat="tab in tabs" label="{{tab}}" >
+
+            <div class="demo-tab tab{{$index%4}}" style="padding: 25px;">
+              <div align="right">
+                <md-button class="md-primary md-raised" ng-click="removeTab( tab )" ng-disabled="tab == data1.Label1 || tab == data1.Label2">  Remove Tab</md-button>
+              </div>
+              <div ng-if="tab == 'General Information' ">
+                <div ng-include="'admin/gen.html'"></div>
+              </div>
+              <div ng-if="tab == 'Requirements, Summary and KPI' ">
+                <div ng-include="'admin/req.html'"></div>
+              </div>
+              <div ng-if="tab == 'Device Onboarding' ">
+                <div ng-include="'admin/divon.html'"></div>
+              </div>
+              <div ng-if="tab == 'Alert Notification Rules' ">
+                <div ng-include="'admin/alertnot.html'"></div>
+              </div>
+              <div ng-if="tab == 'Service-Impact-Analysis' ">
+                <div ng-include="'forms/srvimpact.html'"></div>
+              </div>
+              <div ng-if="tab == 'Alert Response Procedures' ">
+                <div ng-include="'admin/alertres.html'"></div>
+              </div>
+              <div ng-if="tab == 'Event Management Rules' ">
+                <div ng-include="'admin/evtmng.html'"></div>
+              </div>
+              <div ng-if="tab == 'Alert Auto Remediation' ">
+                <div ng-include="'admin/alertauto.html'"></div>
+              </div>
+              <div ng-if="tab == 'Web-App Basic Monitoring' ">
+                <div ng-include="'admin/webapp.html'"></div>
+              </div>
+              <div ng-if="tab == 'Web-App Advanced Monitoring' ">
+                <div ng-include="'forms/webappadv.html'"></div>
+              </div>
+              <div ng-if="tab == 'Alert Notification and Tresholds' ">
+                <div ng-include="'admin/alertnandt.html'"></div>
+              </div>
+              <div ng-if="tab == 'Log Monitoring and Analysis' ">
+                <div ng-include="'admin/logmntr.html'"></div>
+              </div>
+              <div ng-if="tab == 'Application Performance Analysis' ">
+                <div ng-include="'admin/appperf.html'"></div>
+              </div>
+              <div ng-if="tab == 'CCP Open Stack Analysis' ">
+                <div ng-include="'forms/ccpopn.html'"></div>
+              </div>
+              <div ng-if="tab == 'Database Insight Monitoring' ">
+                <div ng-include="'forms/dbmntr.html'"></div>
+              </div>
+              <div ng-if="tab == 'Network Performance Monitoring' ">
+                <div ng-include="'forms/ntwrperf.html'"></div>
+              </div>
+            </div>
+          </md-tab>
+        </md-tabs>
+      </div>
+    </md-content>
+  </section>
+</div>

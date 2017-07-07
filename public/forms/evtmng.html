@@ -1,0 +1,176 @@
+<div ng-controller="AppCtrl" layout="column" layout-padding ng-cloak class="cont">
+<h1>Event Management Rules</h1>
+<div ng-if="tag8" ng-controller="EmpCtrl">
+  <p>This form has already been entered</p>
+  <p>This is the data you have enetred</p>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>CMDB Class</th>
+      <th>Device Type</th>
+      <th>Monitor Name</th>
+      <th>Monitor Type</th>
+      <th>Event Threshold Type</th>
+      <th>Severity</th>
+      <th>Threshold Min/Max Value</th>
+      <th>Alert Notification</th>
+      <th>Alert Response</th>
+      <th>Auto Remediation Required</th>
+      <th>Auto Remediation Updated</th>
+      <th>Remarks</th>
+    </tr>
+  	<tr ng-repeat="g in evt">
+      <td>{{g.projectId}}</td>
+    	<td>{{g.cmdb}}</td>
+    	<td>{{g.server}}</td>
+    	<td>{{g.sub}}</td>
+    	<td>{{g.sub1}}</td>
+    	<td>{{g.thres}}</td>
+    	<td>{{g.svrt}}</td>
+    	<td>{{g.inp1}}</td>
+    	<td>{{g.yn1}}</td>
+    	<td>{{g.yn2}}</td>
+    	<td>{{g.yn3}}</td>
+    	<td>{{g.yn4}}</td>
+    	<td>{{g.inp2}}</td>
+  	</tr>
+  </table>
+</div>
+
+<div ng-if="!tag8" ng-controller="AppCtrl">
+<div layout-gt-sm="row">
+  <md-input-container class="md-icon-float md-block">
+    <!-- Use floating label instead of placeholder -->
+    <label>CMDB Class</label>
+    <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <md-select ng-change="cmd(cmdb)" ng-model="cmdb">
+    <md-option ng-repeat="val in testing" ng-value="val.class">{{val.class}}</md-option>
+  </md-select>
+  </md-input-container>
+  <md-input-container >
+    <label>Type</label>
+  <md-select ng-change="c1(server)" ng-model="server">
+    <md-option ng-repeat="val in test" ng-value="val.type">{{val.type}}</md-option>
+  </md-select>
+  </md-input-container>
+  <md-input-container >
+    <label>Monitor Name</label>
+  <md-select ng-change="ex(sub)" ng-model="sub">
+    <md-option ng-repeat="val in rhel" ng-value="val.monitorName">{{val.monitorName}}</md-option>
+  </md-select>
+  </md-input-container>
+  <md-input-container >
+    <label>Monitor Type</label>
+  <md-select ng-model="sub1">
+    <md-option ng-repeat="val in dev" ng-value="val.monitorType">{{val.monitorType}}</md-option>
+  </md-select>
+  </md-input-container>
+  <md-input-container >
+    <label>Threshold Type</label>
+  <md-select ng-model="thres">
+    <md-option ng-repeat="val in threshold" ng-value="val.class">{{val.class}}</md-option>
+  </md-select>
+  </md-input-container>
+  <md-input-container >
+    <label>Severity</label>
+  <md-select ng-model="svrt">
+    <md-option ng-repeat="val in severity" ng-value="val.class">{{val.class}}</md-option>
+  </md-select>
+  </md-input-container>
+  <md-input-container class="md-icon-float md-block">
+    <!-- Use floating label instead of placeholder -->
+    <label>Threshold</label>
+    <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+    <input ng-model="inp1" type="text">
+  </md-input-container>
+  <md-input-container >
+    <label>Yes/No</label>
+  <md-select ng-model="yn1">
+    <md-option ng-repeat="val in yesno" ng-value="val.name">{{val.name}}</md-option>
+  </md-select>
+  </md-input-container>
+  <md-input-container >
+    <label>Yes/No</label>
+  <md-select ng-model="yn2">
+    <md-option ng-repeat="val in yesno" ng-value="val.name">{{val.name}}</md-option>
+  </md-select>
+  </md-input-container>
+  <md-input-container >
+    <label>Yes/No</label>
+  <md-select ng-model="yn3">
+    <md-option ng-repeat="val in yesno" ng-value="val.name">{{val.name}}</md-option>
+  </md-select>
+  </md-input-container>
+  <md-input-container >
+    <label>Yes/No</label>
+  <md-select ng-model="yn4">
+    <md-option ng-repeat="val in yesno" ng-value="val.name">{{val.name}}</md-option>
+  </md-select>
+  </md-input-container>
+  <md-input-container class="md-icon-float md-block">
+    <!-- Use floating label instead of placeholder -->
+    <label>Remarks</label>
+    <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+    <input ng-model="inp2" type="text">
+  </md-input-container>
+  <md-button md-no-ink class="md-primary " ng-click="addPerson()">Add Data</md-button>
+  </div>
+<table>
+  <tr>
+    <th>CMDB Class</th>
+    <th>Device Type</th>
+    <th>Monitor Name</th>
+    <th>Monitor Type</th>
+    <th>Event Threshold Type</th>
+    <th>Severity</th>
+    <th>Threshold(min/max)</th>
+    <th>Alert Notification</th>
+    <th>Alert Response</th>
+    <th>Auto Remidiation Required</th>
+    <th>Auto Remidiation Updated</th>
+    <th>Remarks</th>
+  </tr >
+  <tr ng-repeat="person in add">
+    <td>
+      {{person.cmdb}}
+  </td>
+  <td>
+    {{person.server}}
+  </td>
+  <td>
+    {{person.sub}}
+  </td>
+  <td>
+    {{person.sub1}}
+  <td>
+    {{person.thres}}
+  </td>
+  <td>
+    {{person.svrt}}
+  </td>
+  <td>
+    {{person.inp1}}
+  </td>
+  <td>
+    {{person.yn1}}
+  </td>
+  <td>
+    {{person.yn2}}
+  </td>
+  <td>
+    {{person.yn3}}
+  </td>
+  <td>
+    {{person.yn4}}
+  </td>
+  <td>{{person.inp2}}</td>
+</tr>
+</table>
+<div style="text-align:center">
+    <div ng-if="isDisabled">
+      <strong>Your Form has been submitted. Please proceed further.</strong>
+    </div>
+    <md-button class="md-raised md-primary" ng-click="event()" ng-disabled="isDisabled" >Submit</md-button>
+</div>
+</div>
+</div>

@@ -1,0 +1,80 @@
+<div ng-controller="AdminCtrl">
+
+
+<div class="cont">
+  <h1 style="text-align: center">Device Onboarding Page</h1>
+  <!-- h4>{{gen}}</h4 -->
+<table class="contTable" align="center">
+  <tr>
+    <th>ProjectID</th>
+    <th>Hostname</th>
+    <th>CMDB Class</th>
+    <th>Type</th>
+    <th>IP Address</th>
+    <th>ENV</th>
+    <th>Production State</th>
+    <th>OS Product Location</th>
+    <th>IT Function</th>
+    <th>CI Support Group</th>
+    <th>Additional Comments</th>
+  </tr>
+
+	<tr ng-repeat="g in dev" ng-include="getdev(g)">
+	</tr>
+</table>
+
+<script type="text/ng-template" id="display">
+	<td>{{g.projectId}}</td>
+	<td>{{g.hstname}}</td>
+	<td>{{g.cmdb}}</td>
+	<td>{{g.server}}</td>
+	<td>{{g.ip}}</td>
+	<td>{{g.env}}</td>
+	<td>{{g.prodstate}}</td>
+	<td>{{g.os}}</td>
+	<td>{{g.itfunc}}</td>
+	<td>{{g.ci}}</td>
+	<td>{{g.addcmt}}</td>
+	<td>
+		<md-button class="md-raised md-primary" ng-click="editdev(g)">EDIT</md-button>
+	</td>
+</script>
+<script type="text/ng-template" id="edit">
+	<td><input type="text" ng-model="selected_dev.projectId" /></td>
+	<td><input type="text" ng-model="selected_dev.hstname" /></td>
+    <td><input type="text" ng-model="selected_dev.cmdb" /></td>
+    <td><input type="text" ng-model="selected_dev.server" /></td>
+    <td><input type="text" ng-model="selected_dev.ip" /></td>
+    <td><input type="text" ng-model="selected_dev.env" /></td>
+    <td><input type="text" ng-model="selected_dev.prodstate" /></td>
+    <td><input type="text" ng-model="selected_dev.os" /></td>
+    <td><input type="text" ng-model="selected_dev.itfunc" /></td>
+    <td><input type="text" ng-model="selected_dev.ci" /></td>
+    <td><input type="text" ng-model="selected_dev.addcmt" /></td>
+    <td>
+        <md-button class="md-raised md-primary" ng-click="savedev($index)">Save</md-button>>
+        <md-button class="md-raised md-primary" ng-click="resetdev()">Cancel</md-button>>
+    </td>
+</script>
+<h3>Add New data to CMDB Class</h3>
+<md-input-container class="md-icon-float md-block">
+  <!-- Use floating label instead of placeholder -->
+  <label>Cmdb Class</label>
+  <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <input ng-model="cmdbClass" type="text" >
+</md-input-container>
+<h3>Add New type to Cmdb Class</h3>
+<md-input-container class="md-icon-float md-block">
+  <!-- Use floating label instead of placeholder -->
+  <label>Type</label>
+  <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <input ng-model="type" type="text" ng-init="type=''" >
+</md-input-container>
+<div style="text-align:center">
+    <div ng-if="isDisabled">
+      <strong>Your data has been added. Add more or proceed further</strong>
+    </div>
+    <md-button class="md-raised md-primary" ng-click="addDep()" >Submit</md-button>
+</div>
+</div>
+</div>

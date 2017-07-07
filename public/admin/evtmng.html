@@ -1,0 +1,99 @@
+<div ng-controller="AdminCtrl">
+
+
+<div class="cont">
+  <h1 style="text-align: center">Event Management Page</h1>
+  <!-- h4>{{gen}}</h4 -->
+<table class="contTable" align="center">
+  <tr>
+    <th>ProjectID</th>
+    <th>CMDB Class</th>
+    <th>Device Type</th>
+    <th>Monitor Name</th>
+    <th>Monitor Type</th>
+    <th>Event Threshold Type</th>
+    <th>Severity</th>
+    <th>Threshold Min/Max Value</th>
+    <th>Alert Notification</th>
+    <th>Alert Response</th>
+    <th>Auto Remediation Required</th>
+    <th>Auto Remediation Updated</th>
+    <th>Remarks</th>
+  </tr>
+	<tr ng-repeat="g in evt" ng-include="getEvt(g)">
+	</tr>
+</table>
+
+<script type="text/ng-template" id="display">
+	<td>{{g.projectId}}</td>
+	<td>{{g.cmdb}}</td>
+	<td>{{g.server}}</td>
+	<td>{{g.sub}}</td>
+	<td>{{g.sub1}}</td>
+	<td>{{g.thres}}</td>
+	<td>{{g.svrt}}</td>
+	<td>{{g.inp1}}</td>
+	<td>{{g.yn1}}</td>
+	<td>{{g.yn2}}</td>
+	<td>{{g.yn3}}</td>
+	<td>{{g.yn4}}</td>
+	<td>{{g.inp2}}</td>
+	<td>
+		<md-button class="md-raised md-primary" ng-click="editEvt(g)">EDIT</md-button>
+	</td>
+</script>
+<script type="text/ng-template" id="edit">
+	<td><input type="text" ng-model="selected_evt.projectId" /></td>
+	<td><input type="text" ng-model="selected_evt.cmdb" /></td>
+    <td><input type="text" ng-model="selected_evt.title" /></td>
+    <td><input type="text" ng-model="selected_evt.sub" /></td>
+    <td><input type="text" ng-model="selected_evt.sub1" /></td>
+    <td><input type="text" ng-model="selected_evt.thres" /></td>
+    <td><input type="text" ng-model="selected_evt.svrt" /></td>
+    <td><input type="text" ng-model="selected_evt.inp1" /></td>
+    <td><input type="text" ng-model="selected_evt.yn1" /></td>
+    <td><input type="text" ng-model="selected_evt.yn2" /></td>
+    <td><input type="text" ng-model="selected_evt.yn3" /></td>
+    <td><input type="text" ng-model="selected_evt.yn4" /></td>
+    <td><input type="text" ng-model="selected_evt.inp2" /></td>
+    <td>
+        <md-button class="md-raised md-primary" ng-click="saveEvt($index)">Save</md-button>>
+        <md-button class="md-raised md-primary" ng-click="resetEvt()">Cancel</md-button>>
+    </td>
+</script>
+<h3>Add New data to CMDB Class</h3>
+<md-input-container class="md-icon-float md-block">
+  <!-- Use floating label instead of placeholder -->
+  <label>Cmdb Class</label>
+  <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <input ng-model="cmdbClass" type="text" >
+</md-input-container>
+<h3>Add New type to Cmdb Class</h3>
+<md-input-container class="md-icon-float md-block">
+  <!-- Use floating label instead of placeholder -->
+  <label>Type</label>
+  <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <input ng-model="type" type="text" ng-init="type=''" >
+</md-input-container>
+<h3>Add New Monitor Name to type</h3>
+<md-input-container class="md-icon-float md-block">
+  <!-- Use floating label instead of placeholder -->
+  <label>Monitor Name</label>
+  <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <input ng-model="monitorName" type="text"  ng-init="monitorName=''">
+</md-input-container>
+<h3>Add New Monitor Type to Monitor Name</h3>
+<md-input-container class="md-icon-float md-block">
+  <!-- Use floating label instead of placeholder -->
+  <label>Monitor Type</label>
+  <!--md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon-->
+  <input ng-model="monitorType" type="text" ng-init="monitorType=''" >
+</md-input-container>
+<div style="text-align:center">
+    <div ng-if="isDisabled">
+      <strong>Your data has been added. Add more or proceed further</strong>
+    </div>
+    <md-button class="md-raised md-primary" ng-click="addDep()" >Submit</md-button>
+</div>
+</div>
+</div>
